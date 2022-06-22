@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 const gulp = require('gulp'),
@@ -11,25 +11,34 @@ const gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),                       // плагин для минимизации CSS
 	cache = require('gulp-cache'),                              // модуль для кэширования
 	del = require('del'),                                       // модуль для удаления файлов и каталогов
-	rename = require('gulp-rename');                            //
+	rename = require('gulp-rename')                             //
+;
 
 
 const path = {
 	dist: {
 		html: 'dist/',
 		css: 'dist/css/',
+		img: 'dist/img/',
+		fonts: 'dist/fonts/'
 	},
 	build: {
 		html: 'build/',
 		css: 'build/css/',
+		img: 'build/img/',
+		fonts: 'build/fonts/'
 	},
 	src: {
 		html: 'src/**/*.html',
-		scss: 'src/sass/main.scss'
+		scss: 'src/sass/main.scss',
+		img: 'src/img/**/*.*',
+		fonts: 'src/fonts/*.*'
 	},
 	watch: {
 		html: 'src/**/*.html',
-		scss: 'src/sass/*.scss'
+		scss: 'src/sass/*.scss',
+		img: 'src/img/**/*.*',
+		fonts: 'src/fonts/*.*'
 	},
 	clean: './build/*'
 };
@@ -70,6 +79,20 @@ gulp.task('css:build', function () {
 });
 
 
+gulp.task('fonts:build', function () {
+	return gulp.src(path.src.fonts)
+		.pipe(gulp.dest(path.build.fonts))
+		.pipe(gulp.dest(path.dist.fonts));
+});
+
+
+gulp.task('image:build', function () {
+	return gulp.src(path.src.img)
+		.pipe(gulp.dest(path.build.img))
+		.pipe(gulp.dest(path.dist.img));
+});
+
+
 gulp.task('clean:build', function () {
 	return del(path.clean);
 });
@@ -85,6 +108,8 @@ gulp.task('build',
 		gulp.parallel(
 			'html:build',
 			'css:build',
+			'fonts:build',
+			'image:build'
 		)
 	)
 );
@@ -93,6 +118,8 @@ gulp.task('build',
 gulp.task('watch', function () {
 	gulp.watch(path.watch.html, gulp.series('html:build'));
 	gulp.watch(path.watch.scss, gulp.series('css:build'));
+	gulp.watch(path.watch.img, gulp.series('image:build'));
+	gulp.watch(path.watch.fonts, gulp.series('fonts:build'));
 });
 
 

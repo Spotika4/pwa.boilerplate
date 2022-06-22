@@ -23,6 +23,7 @@
     "gulp-plumber": "latest",
     "gulp-rigger": "^0.5.8",
     "gulp-sourcemaps": "^3.0.0",
+    "imagemin-jpeg-recompress": "^7.0.0",
     "popper.js": "^1.16.1",
     "sass": "^1.52.3"
   }
