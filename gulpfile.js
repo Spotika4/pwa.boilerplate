@@ -17,7 +17,6 @@ const gulp = require('gulp'),
 
 const path = {
 	dist: {
-		html: 'dist/',
 		css: 'dist/css/',
 		img: 'dist/img/',
 		fonts: 'dist/fonts/'
@@ -29,7 +28,7 @@ const path = {
 		fonts: 'build/fonts/'
 	},
 	src: {
-		html: 'src/**/*.html',
+		html: 'src/*.html',
 		scss: 'src/sass/main.scss',
 		img: 'src/img/**/*.*',
 		fonts: 'src/fonts/*.*'
@@ -40,7 +39,10 @@ const path = {
 		img: 'src/img/**/*.*',
 		fonts: 'src/fonts/*.*'
 	},
-	clean: './build/*'
+	clean: {
+		build: './build/*',
+		dist: './dist/*'
+	}
 };
 
 
@@ -70,10 +72,22 @@ gulp.task('css:build', function () {
 		.pipe(sourcemaps.init())                                // инициализируем sourcemap
 		.pipe(autoprefixer())                                   // добавим префиксы
 		.pipe(gulp.dest(path.build.css))
+		.pipe(sourcemaps.write('./'))                           // записываем sourcemap
+		.pipe(gulp.dest(path.build.css))                        // выгружаем в build
+		.pipe(webserver.reload({ stream: true }));              // перезагрузим сервер
+});
+
+
+gulp.task('css:dist', function () {
+	return gulp.src(path.src.scss)                              // получим main.scss
+		.pipe(sass())                                           // scss -> css
+		.pipe(plumber())                                        // для отслеживания ошибок
+		.pipe(sourcemaps.init())                                // инициализируем sourcemap
+		.pipe(autoprefixer())                                   // добавим префиксы
+		.pipe(gulp.dest(path.dist.css))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(cleanCSS())                                       // минимизируем CSS
 		.pipe(sourcemaps.write('./'))                           // записываем sourcemap
-		.pipe(gulp.dest(path.build.css))                        // выгружаем в build
 		.pipe(gulp.dest(path.dist.css))                         // выгружаем в dist
 		.pipe(webserver.reload({ stream: true }));              // перезагрузим сервер
 });
@@ -82,6 +96,11 @@ gulp.task('css:build', function () {
 gulp.task('fonts:build', function () {
 	return gulp.src(path.src.fonts)
 		.pipe(gulp.dest(path.build.fonts))
+});
+
+
+gulp.task('fonts:dist', function () {
+	return gulp.src(path.src.fonts)
 		.pipe(gulp.dest(path.dist.fonts));
 });
 
@@ -89,18 +108,39 @@ gulp.task('fonts:build', function () {
 gulp.task('image:build', function () {
 	return gulp.src(path.src.img)
 		.pipe(gulp.dest(path.build.img))
+});
+
+
+gulp.task('image:dist', function () {
+	return gulp.src(path.src.img)
 		.pipe(gulp.dest(path.dist.img));
 });
 
 
 gulp.task('clean:build', function () {
-	return del(path.clean);
+	return del(path.clean.build);
+});
+
+
+gulp.task('clean:dist', function () {
+	return del(path.clean.dist);
 });
 
 
 gulp.task('cache:clear', function () {
 	cache.clearAll();
 });
+
+
+gulp.task('dist',
+	gulp.series('clean:dist',
+		gulp.parallel(
+			'css:dist',
+			'fonts:dist',
+			'image:dist'
+		)
+	)
+);
 
 
 gulp.task('build',
