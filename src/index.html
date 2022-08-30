@@ -5,14 +5,23 @@
 </head>
 <body>
     <div id="ROOT">
-        <div id="APP">
-            <header>
-                <h1>Заголовок</h1>
+        <div class="screen active" id="APP">
+            <header class="shadow">
+                <div class="container-fluid">
+                    <h1>Главная</h1>
+                </div>
             </header>
             <main>
-
+                <div class="scroller">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary w-100 mt-1" onclick="screen('#SIDER');">Сайдер</button>
+                        <button class="btn btn-primary w-100 mt-1" onclick="widget('#MENU');">Меню</button>
+                        <button class="btn btn-primary w-100 mt-1" onclick="widget('#WIDGET');">Виджет</button>
+                        <button class="btn btn-primary w-100 mt-1" onclick="shutter();">Шторка</button>
+                    </div>
+                </div>
             </main>
-            <footer>
+            <footer class="shadow-lg">
                 <menu>
                     <li>Главная</li>
                     <li>Еще одна</li>
@@ -20,6 +29,38 @@
                     <li>Еще...</li>
                 </menu>
             </footer>
+        </div>
+        <div class="screen" id="SIDER">
+            <header class="shadow">
+                <div class="container-fluid">
+                    <h1>Сайдер</h1>
+                </div>
+            </header>
+            <main>
+                <div class="container-fluid">
+                    <button class="btn btn-primary mt-3 w-100" onclick="screen('#APP');">Вернуться</button>
+                </div>
+            </main>
+        </div>
+        <div class="widget screen" id="WIDGET">
+            <header class="shadow">
+                <div class="container-fluid">
+                    <h1>Виджет</h1>
+                </div>
+            </header>
+            <main>
+                <div class="container-fluid">
+                    <button class="btn btn-primary mt-3 w-100" onclick="widget('#WIDGET');">Вернуться</button>
+                </div>
+            </main>
+        </div>
+        <div class="widget" id="MENU">
+            <menu class="shadow">
+                <li>Главная</li>
+                <li>Еще одна</li>
+                <li>Очередная</li>
+                <li>Еще...</li>
+            </menu>
         </div>
     </div>
 </body>
