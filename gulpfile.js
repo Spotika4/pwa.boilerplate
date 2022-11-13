@@ -196,7 +196,7 @@ gulp.task('dist',
 		gulp.parallel(
 			'css:dist',
 			'js:dist',
-			'sw:dist',
+			//'sw:dist',
 			'image:dist',
 			'fonts:dist',
 			'manifest:dist'
@@ -211,7 +211,7 @@ gulp.task('build',
 			'html:build',
 			'css:build',
 			'js:build',
-			'sw:build',
+			//'sw:build',
 			'image:build',
 			'fonts:build',
 			'manifest:build'
