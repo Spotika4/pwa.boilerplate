@@ -39,7 +39,7 @@ const path = {
 		js: 'src/js/main.js',
 		sw: 'src/js/sw.js',
 		img: 'src/img/**/*.*',
-		fonts: 'src/fonts/*.*',
+		fonts: 'src/fonts/**/*.*',
 		manifest: 'src/manifest.json'
 	},
 	watch: {
@@ -47,7 +47,7 @@ const path = {
 		scss: 'src/sass/*.scss',
 		js: 'src/js/*.js',
 		img: 'src/img/**/*.*',
-		fonts: 'src/fonts/*.*',
+		fonts: 'src/fonts/**/*.*',
 		manifest: 'src/js/manifest.js'
 	},
 	clean: {
@@ -60,7 +60,8 @@ const path = {
 gulp.task('webserver', function () {
 	webserver({
 		server: {
-			baseDir: './build'
+			baseDir: './build',
+            port: 3010
 		},
 		notify: false
 	});

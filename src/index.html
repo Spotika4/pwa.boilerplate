@@ -33,81 +33,14 @@
                         <button class="btn btn-primary w-100 mt-1" onclick="screen('#PROFILE');">Профиль</button>
                         <button class="btn btn-primary w-100 mt-1" onclick="widget('#MENU');">Меню</button>
                         <button class="btn btn-primary w-100 mt-1" onclick="widget('#WIDGET');">Виджет</button>
-                        <button class="btn btn-primary w-100 mt-1" onclick="shutter();">Шторка</button>
                     </div>
                 </div>
             </main>
-            <footer class="shadow-lg">
-                <menu>
-                    <li>
-                        <a href="#" class="d-flex flex-column text-decoration-none text-black">
-                            <span class="d-flex flex-row align-content-center mt-2 justify-content-center">
-                                <i class="icon-directions_car"></i>
-                            </span>
-                            <span class="d-flex flex-row justify-content-center mt-1">Парковка</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="d-flex flex-column text-decoration-none text-muted">
-                            <span class="d-flex flex-row align-content-center mt-2 justify-content-center">
-                                <i class="icon-star_outline"></i>
-                            </span>
-                            <span class="d-flex flex-row justify-content-center mt-1">Избранное</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="d-flex flex-column text-decoration-none text-muted">
-                            <span class="d-flex flex-row align-content-center mt-2 justify-content-center">
-                                <i class="icon-assignment"></i>
-                            </span>
-                            <span class="d-flex flex-row justify-content-center mt-1">Заявки</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="d-flex flex-column text-decoration-none text-muted">
-                            <span class="d-flex flex-row align-content-center mt-2 justify-content-center">
-                                <i class="icon-more_horiz"></i>
-                            </span>
-                            <span class="d-flex flex-row justify-content-center mt-1">Еще</span>
-                        </a>
-                    </li>
-                </menu>
-            </footer>
         </div>
-        <div class="screen vw-100" id="SIDER">
-            <header class="shadow">
-                <div class="container-fluid">
-                    <h1>Сайдер</h1>
-                </div>
-            </header>
-            <main>
-                <div class="container-fluid">
-                    <button class="btn btn-primary mt-3 w-100" onclick="screen('#APP');">Вернуться</button>
-                </div>
-            </main>
-        </div>
-        <div class="widget vw-100 screen" id="WIDGET">
-            <header class="shadow">
-                <div class="container-fluid">
-                    <h1>Виджет</h1>
-                </div>
-            </header>
-            <main>
-                <div class="container-fluid">
-                    <button class="btn btn-primary mt-3 w-100" onclick="widget('#WIDGET');">Вернуться</button>
-                </div>
-            </main>
-        </div>
-        <div class="widget vw-100" id="MENU">
-            <div class="container-fluid p-0">
-                <menu class="list-group shadow">
-                    <li class="list-group-item">Главная</li>
-                    <li class="list-group-item">Еще одна</li>
-                    <li class="list-group-item">Очередная</li>
-                    <li class="list-group-item" onclick="widget('#MENU');">Еще...</li>
-                </menu>
-            </div>
-        </div>
+        //= chunks/footer.html
+        //= chunks/sider.html
+        //= chunks/widget.html
+        //= chunks/menu.html
     </div>
 </body>
 </html>

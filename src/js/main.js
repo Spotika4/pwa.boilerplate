@@ -10,9 +10,3 @@ function widget(selector){
 		? document.querySelector(`.widget${selector}`).classList.add('active')
 		: document.querySelector(`.widget${selector}`).classList.remove('active');
 }
-
-function shutter(){
-	return !document.querySelector('.screen.active').classList.contains('open')
-		? document.querySelector('.screen.active').classList.add('open')
-		: document.querySelector('.screen.active').classList.remove('open');
-}

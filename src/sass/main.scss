@@ -1,17 +1,18 @@
 
 
+$bootstrap-icons-font-dir: '../../fonts' !default;
+
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 $font-size-root:              null !default;
+$font-size-base:              .75rem; // Assumes the browser default, typically `16px`
 $line-height-base:            1.25 !default;
 
+$primary:                     #0D73BB !default;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
-
-@import "icons/variables";
-@import "icons/style";
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -22,6 +23,8 @@ $line-height-base:            1.25 !default;
 @import "../../node_modules/bootstrap/scss/images";
 @import "../../node_modules/bootstrap/scss/containers";
 @import "../../node_modules/bootstrap/scss/grid";
+
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
 
 @import "custom";
 
